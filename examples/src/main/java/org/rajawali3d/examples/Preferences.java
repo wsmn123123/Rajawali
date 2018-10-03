@@ -38,7 +38,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
     }
 
     private void updatePreferences() {
-        wallpaperRendererPreference = preferences.getString(WALLPAPER_RENDERER_KEY, "");
+        wallpaperRendererPreference = preferences.getString(WALLPAPER_RENDERER_KEY, "0");
     }
 
     @Override
