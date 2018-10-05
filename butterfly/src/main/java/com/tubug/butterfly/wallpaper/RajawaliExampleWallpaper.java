@@ -20,7 +20,7 @@ public class RajawaliExampleWallpaper extends Wallpaper {
         final int renderer = Integer.parseInt(Preferences.getInstance(this).getWallpaperRendererPreference());
             RajLog.i("Creating wallpaper engine: " + renderer);
 
-        mRenderer = new WallpaperRenderer(this);
+        mRenderer = new BumpMappingRenderer(this);
 
             // TODO: I'm sure there is a better way to do this
             switch (renderer) {

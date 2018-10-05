@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
+
+import com.tubug.butterfly.wallpaper.BumpMappingRenderer;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.animation.Animation;
@@ -24,7 +27,7 @@ import org.rajawali3d.view.ISurface;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnTouchListener {
 
     protected ISurface mRenderSurface;
     protected ISurfaceRenderer mRenderer;
@@ -35,6 +38,7 @@ public class MainActivity extends Activity {
 
         // Find the TextureView
         mRenderSurface = (ISurface) findViewById(R.id.rajwali_surface);
+        ((View) mRenderSurface).setOnTouchListener(this);
         // Create the renderer
         mRenderer = createRenderer();
         onBeforeApplyRenderer();
@@ -50,7 +54,25 @@ public class MainActivity extends Activity {
     }
 
     public ISurfaceRenderer createRenderer() {
-        return new LoadModelRenderer(this.getApplicationContext());
+        return new BumpMappingRenderer(this.getApplicationContext());
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                ((BumpMappingRenderer) mRenderer).getObjectAt(event.getX(), event.getY());
+                break;
+            case MotionEvent.ACTION_MOVE:
+//                ((BumpMappingRenderer) mRenderer).moveSelectedObject(event.getX(),
+//                        event.getY());
+                ((BumpMappingRenderer)mRenderer).rotateObj(event.getX(),event.getY());
+                break;
+            case MotionEvent.ACTION_UP:
+                ((BumpMappingRenderer) mRenderer).stopMovingSelectedObject();
+                break;
+        }
+        return true;
     }
 
 
@@ -87,7 +109,7 @@ public class MainActivity extends Activity {
             getCurrentCamera().setZ(16);
 
             LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
-                    mTextureManager, R.raw.xx_obj);
+                    mTextureManager, R.raw.rose_obj);
             try {
                 objParser.parse();
                 mObjectGroup = objParser.getParsedObject();

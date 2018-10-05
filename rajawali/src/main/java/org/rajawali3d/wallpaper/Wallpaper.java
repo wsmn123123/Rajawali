@@ -60,7 +60,10 @@ public abstract class Wallpaper extends WallpaperService {
             mRenderer = renderer;
             mAntiAliasingConfig = antiAliasingConfig;
             mDefaultPreviewOffsetX = 0.5f;
+
+
         }
+
 
         @Override
         public void onOffsetsChanged(float xOffset, float yOffset, float xOffsetStep, float yOffsetStep,

@@ -1,1 +1,1 @@
-include ':rajawali', ':examples', ':butterfly' , ':vuforia', ':wear', ':wear-example', ':vr'
+include ':rajawali', ':examples', ':butterfly', ':ballrotate' , ':vuforia', ':wear', ':wear-example', ':vr'
