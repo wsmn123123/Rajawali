@@ -18,7 +18,7 @@
             android:paddingBottom="5dp"
             android:paddingStart="10dp"
             android:paddingTop="5dp"
-            android:text="Ball Rotate Settings"
+            android:text="@string/ball_rotate_settings"
             android:textSize="20sp" />
 
         <View
@@ -33,7 +33,7 @@
             android:orientation="vertical">
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff"
@@ -45,21 +45,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:text="Drag to rotate ball"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/dragable"
                     android:textSize="18sp" />
 
                 <Switch
                     android:id="@+id/switch_drag_rotate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:checked="true"
                     android:textSize="24sp"
                     android:thumb="@drawable/switch_custom_thumb_selector"
                     android:track="@drawable/switch_custom_track_selector" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,7 +79,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="Ball auto rotate"
+                    android:text="@string/automatic_rotation"
                     android:textSize="18sp" />
 
                 <Switch
@@ -91,13 +94,13 @@
             </LinearLayout>
             <!--admob layout-->
             <LinearLayout
+                android:id="@+id/ad_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="10dp"
                 android:background="#00000000"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp">
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
             </LinearLayout>
 

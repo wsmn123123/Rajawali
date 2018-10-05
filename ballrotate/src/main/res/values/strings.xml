@@ -18,4 +18,12 @@
     <!-- The message text is the prefix, lwp_name, and suffix concatenated -->
     <string name="picker_toast_prefix">Choose \"</string>
     <string name="picker_toast_suffix">\" from the list of live wallpapers</string>
+    <string name="ball_rotate_settings">Ball Rotate - Settings</string>
+
+
+    <string name="app_admob_id">ca-app-pub-3336666664501170</string>
+    <string name="app_admob_banner_id">ca-app-pub-3336666664501170/6204912240</string>
+    <string name="app_admob_interstitial_id">ca-app-pub-3336666664501170/5724446381</string>
+    <string name="dragable">Dragable</string>
+    <string name="automatic_rotation">Automatic rotation</string>
 </resources>

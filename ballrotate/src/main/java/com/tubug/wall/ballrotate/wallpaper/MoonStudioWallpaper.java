@@ -21,7 +21,7 @@ public class MoonStudioWallpaper extends Wallpaper implements SharedPreferences.
         super.onCreate();
         preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         preferences.registerOnSharedPreferenceChangeListener(this);
-        RajLog.setDebugEnabled(true);
+        RajLog.setDebugEnabled(false);
     }
 
 

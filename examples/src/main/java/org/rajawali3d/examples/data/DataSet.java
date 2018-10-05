@@ -1,8 +1,7 @@
 package org.rajawali3d.examples.data;
 
-import android.support.annotation.NonNull;
 
-import com.rajawali3d.examples.data.DataSetImpl;
+
 
 import org.rajawali3d.examples.R;
 import org.rajawali3d.examples.examples.animation.AnimationFragment;
@@ -88,7 +87,7 @@ public final class DataSet {
 
     DataSet() {
         categories = createCategories();
-        categories.addAll(DataSetImpl.getInstance().getCategories());
+//        categories.addAll(DataSetImpl.getInstance().getCategories());
     }
 
     public static synchronized DataSet getInstance() {
@@ -103,7 +102,6 @@ public final class DataSet {
         return instance;
     }
 
-    @NonNull
     static List<Category> createCategories() {
         List<Category> categories = new LinkedList<>();
         categories.add(new Category(R.string.category_general, new Example[]{

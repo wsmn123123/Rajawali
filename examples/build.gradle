@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.compileSdk
-    buildToolsVersion rootProject.buildTools
 
     defaultConfig {
         applicationId "org.rajawali3d.examples"
@@ -24,12 +23,12 @@ android {
         }
     }
 
-    productFlavors {
-        withVuforia {
-        }
-        withoutVuforia {
-        }
-    }
+//    productFlavors {
+//        withVuforia {
+//        }
+//        withoutVuforia {
+//        }
+//    }
 
     dexOptions {
         // Skip pre-dexing when running on Travis CI or when disabled via -Dpre-dex=false.
@@ -39,6 +38,7 @@ android {
     lintOptions {
         abortOnError false;
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -50,8 +50,8 @@ dependencies {
 
 
     compile project(':rajawali')
-    withVuforiaCompile project(':vuforia')
-    withVuforiaCompile project(':vr')
+//    withVuforiaCompile project(':vuforia')
+//    withVuforiaCompile project(':vr')
 
-    wearApp project(':wear-example')
+//    wearApp project(':wear-example')
 }

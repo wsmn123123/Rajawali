@@ -3,6 +3,7 @@
     <string name="settings_title">Settings</string>
     <string name="renderer_category">Wallpaper Renderer</string>
     <string name="renderer_picker_title">Renderer</string>
+    <string name="app_name_wallpaper">app_name_wallpaper</string>
     <string name="renderer_picker_summary">Choose the renderer class to use for the wallpaper demo.</string>
 
     <!-- Wallpaper -->

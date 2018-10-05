@@ -1,0 +1,14 @@
+
+3D球,3D球,逼真的3D球.真实的纹理,真实的贴图.在两组灯光下,球体反射出真实的表面.
+可以按住,拖动(需设置'可拖动').可看清Bright Moon的logo.
+设置自动旋转后,球体会慢慢转动.真的比较真实.
+
+目前只有篮球一个球体.后续会增加其他球体. 请您保存关注.
+
+3D ball,3D ball,
+Realistic 3D ball. Real texture, real texture. Under two sets of lights, the ball reflects the real surface.
+You can hold down and drag (you need to set 'dragable'). You can see the logo of Bright Moon.
+
+After setting the automatic rotation, the sphere will slowly rotate. It is really true.
+
+At present, there is only one sphere in basketball. The follow-up will add other balls. Please pay your attention.
