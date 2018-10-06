@@ -40,7 +40,7 @@ public class WallpaperPreferenceActivity extends Activity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                if(isFinishing()){
+                if(!isFinishing()){
                     mInterstitialAd.show();
                 }
             }

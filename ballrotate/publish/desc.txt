@@ -5,8 +5,7 @@
 
 目前只有篮球一个球体.后续会增加其他球体. 请您保存关注.
 
-3D ball,3D ball,
-Realistic 3D ball. Real texture, real texture. Under two sets of lights, the ball reflects the real surface.
+3D ball,3D ball,Realistic 3D ball. Real texture, real texture. Under two sets of lights, the ball reflects the real surface.
 You can hold down and drag (you need to set 'dragable'). You can see the logo of Bright Moon.
 
 After setting the automatic rotation, the sphere will slowly rotate. It is really true.
