@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ddd">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,13 +25,17 @@
             android:layout_height="0.5dp"
             android:background="#aaa" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/basic"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="vertical">
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,6 +95,98 @@
                     android:thumb="@drawable/switch_custom_thumb_selector"
                     android:track="@drawable/switch_custom_track_selector" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+                <RadioGroup
+                    android:id="@+id/bg_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <RadioButton
+                        android:id="@+id/radio_default"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:button="@null"
+                        android:drawableRight="@android:drawable/btn_radio"
+                        android:text="@string/rd_default"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#aaa" />
+                    <RadioButton
+                        android:id="@+id/radio_drop"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:button="@null"
+                        android:drawableRight="@android:drawable/btn_radio"
+                        android:text="@string/rd_drop"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#aaa" />
+                    <RadioButton
+                        android:id="@+id/radio_bones"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:button="@null"
+                        android:drawableRight="@android:drawable/btn_radio"
+                        android:text="@string/rd_bone"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#aaa" />
+                    <RadioButton
+                        android:id="@+id/radio_wave"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:button="@null"
+                        android:drawableRight="@android:drawable/btn_radio"
+                        android:text="@string/rd_wave"
+                        />
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/scale"/>
+
+            <SeekBar
+                android:id="@+id/sk_scale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:max="40"
+                android:progressDrawable="@drawable/seekbar_layer"
+                android:thumb="@drawable/scrubber_selector"
+                android:thumbOffset="0dip"
+                />
             <!--admob layout-->
             <LinearLayout
                 android:id="@+id/ad_layout"

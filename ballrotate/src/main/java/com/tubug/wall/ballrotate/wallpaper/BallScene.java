@@ -73,7 +73,7 @@ class BallScene extends Scene implements OnObjectPickedListener {
         mCamera2 = new Camera(); //Lets create a second camera for the scene.
         mCamera2.setPosition(0, 0, 7);
         mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
-        mCamera2.setFarPlane(50);
+        mCamera2.setFarPlane(10);
         mCamera2.setFieldOfView(60);
         mCamera2.updateFrustum(mInvVPMatrix);
         replaceAndSwitchCamera(mCamera2,0);
@@ -91,14 +91,35 @@ class BallScene extends Scene implements OnObjectPickedListener {
         mPicker = new ObjectColorPicker(mRenderer);
         mPicker.setOnObjectPickedListener(this);
 
-        getCamera().setPosition(0, 0, 7);
+       float z = mpreferences.getInt(Const.TAG_SCALE_RATE,30);
+       z /= 10f;
+       z = 7-z;
+        mCamera2.setPosition(0, 0, z);
 
         wall = new Plane(18, 12, 2, 2);
         Material material1 = new Material();
         material1.setDiffuseMethod(new DiffuseMethod.Lambert());
         material1.enableLighting(true);
-        material1.addTexture(new Texture("wallDiffuseTex", R.drawable.masonry_wall_texture));
-        material1.addTexture(new NormalMapTexture("wallNormalTex", R.drawable.masonry_wall_normal_map));
+        int bgTexId = mpreferences.getInt(Const.TAG_BG_TEXURE,R.id.radio_default);
+        int diffTexId = R.drawable.masonry_wall_texture;
+        int norTexId = R.drawable.masonry_wall_normal_map;
+        switch (bgTexId){
+            case R.id.radio_bones:
+                diffTexId = R.drawable.born;
+                 norTexId = R.drawable.born_nor;
+                break;
+            case R.id.radio_drop:
+                diffTexId = R.drawable.drop;
+                norTexId = R.drawable.drop_nor;
+                break;
+            case R.id.radio_wave:
+                diffTexId = R.drawable.wave;
+                norTexId = R.drawable.wave_nor;
+                break;
+        }
+
+        material1.addTexture(new Texture("wallDiffuseTex", diffTexId));
+        material1.addTexture(new NormalMapTexture("wallNormalTex", norTexId));
         material1.setColorInfluence(0);
         wall.setMaterial(material1);
         wall.setZ(-2);

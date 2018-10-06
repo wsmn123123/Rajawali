@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">BallRotate</string>
-    <string name="app_name_wallpaper">BallRotate Wallpaper</string>
+    <string name="app_name">Rotating Ball 3D</string>
+    <string name="app_name_wallpaper">Rotating Ball 3D Wallpaper</string>
     <string name="settings_title">Settings</string>
     <string name="renderer_category">Wallpaper Renderer</string>
     <string name="renderer_picker_title">Renderer</string>
     <string name="renderer_picker_summary">Choose the renderer class to use for the wallpaper demo.</string>
     <!-- Wallpaper -->
     <!-- Name in Live Wallpaper Picker list -->
-    <string name="lwp_name">BallRotate Wallpaper</string>
+    <string name="lwp_name">Rotating Ball 3D Wallpaper</string>
 
     <!-- Description in Live Wallpaper Picker list -->
-    <string name="lwp_desc">3D Balls Rotating, with light moving live wallpaper.</string>
+    <string name="lwp_desc">Rotating Ball 3D, with light moving live wallpaper.</string>
 
     <!-- Author -->
     <string name="lwp_author">BrightMoon Studio</string>
@@ -18,7 +18,7 @@
     <!-- The message text is the prefix, lwp_name, and suffix concatenated -->
     <string name="picker_toast_prefix">Choose \"</string>
     <string name="picker_toast_suffix">\" from the list of live wallpapers</string>
-    <string name="ball_rotate_settings">Ball Rotate - Settings</string>
+    <string name="ball_rotate_settings">Rotating Ball 3D - Settings</string>
 
 
     <string name="app_admob_id">ca-app-pub-3336666664501170</string>
@@ -26,4 +26,11 @@
     <string name="app_admob_interstitial_id">ca-app-pub-3336666664501170/5724446381</string>
     <string name="dragable">Dragable</string>
     <string name="automatic_rotation">Automatic rotation</string>
+    <string name="basic">Basic</string>
+    <string name="background">Background</string>
+    <string name="rd_default">Default Wall</string>
+    <string name="rd_drop">Gray Drop</string>
+    <string name="rd_bone">White Centrifugal</string>
+    <string name="rd_wave">Colorful Wave</string>
+    <string name="scale">Scale</string>
 </resources>

@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Switch;
 
 import com.google.android.gms.ads.AdListener;
@@ -65,6 +67,34 @@ public class WallpaperPreferenceActivity extends Activity {
             }
         });
         autoRotate.setChecked(preferences.getBoolean(Const.TAG_AUTO_ROTATE,true));
+
+       RadioGroup radioGroup = findViewById(R.id.bg_group);
+       radioGroup.check(preferences.getInt(Const.TAG_BG_TEXURE,R.id.radio_default));
+       radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+           @Override
+           public void onCheckedChanged(RadioGroup radioGroup, int i) {
+               preferences.edit().putInt(Const.TAG_BG_TEXURE,i).apply();
+           }
+       });
+
+        SeekBar seekBar = findViewById(R.id.sk_scale);
+        seekBar.setProgress(preferences.getInt(Const.TAG_SCALE_RATE,30));
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                preferences.edit().putInt(Const.TAG_SCALE_RATE,seekBar.getProgress()).apply();
+            }
+        });
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
         MobileAds.initialize(this, getString(R.string.app_admob_id));
