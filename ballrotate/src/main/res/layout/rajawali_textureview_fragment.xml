@@ -16,10 +16,6 @@
         textureview:frameRate="60.0"
         textureview:renderMode="RENDER_WHEN_DIRTY"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="chagnge"
-        android:id="@+id/change"/>
+
 
 </FrameLayout>

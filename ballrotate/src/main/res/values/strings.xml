@@ -33,4 +33,10 @@
     <string name="rd_bone">White Centrifugal</string>
     <string name="rd_wave">Colorful Wave</string>
     <string name="scale">Scale</string>
+
+    <string name="tip_msg">msg</string>
+    <string name="tip_title">title</string>
+    <string name="btn_sure">Sure</string>
+    <string name="btn_preview">Preview</string>
+    <string name="btn_choose">Choose >></string>
 </resources>

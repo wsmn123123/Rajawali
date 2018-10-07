@@ -2,18 +2,26 @@ package com.tubug.wall.ballrotate.wallpaper;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -21,6 +29,7 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.tubug.wall.ballrotate.DensityDpToPx;
 import com.tubug.wall.ballrotate.MainActivity;
 import com.tubug.wall.ballrotate.R;
 
@@ -33,16 +42,17 @@ public class WallpaperPreferenceActivity extends Activity {
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
     Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        mHandler = new Handler(getMainLooper()){
+        mHandler = new Handler(getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                if(!isFinishing()){
+                if (!isFinishing()) {
                     mInterstitialAd.show();
                 }
             }
@@ -53,32 +63,32 @@ public class WallpaperPreferenceActivity extends Activity {
         dragRotate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                preferences.edit().putBoolean(Const.TAG_DRAG,b).apply();
+                preferences.edit().putBoolean(Const.TAG_DRAG, b).apply();
             }
         });
-        dragRotate.setChecked(preferences.getBoolean(Const.TAG_DRAG,true));
+        dragRotate.setChecked(preferences.getBoolean(Const.TAG_DRAG, true));
 
 
         Switch autoRotate = findViewById(R.id.switch_auto_rotate);
         autoRotate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                preferences.edit().putBoolean(Const.TAG_AUTO_ROTATE,b).apply();
+                preferences.edit().putBoolean(Const.TAG_AUTO_ROTATE, b).apply();
             }
         });
-        autoRotate.setChecked(preferences.getBoolean(Const.TAG_AUTO_ROTATE,true));
+        autoRotate.setChecked(preferences.getBoolean(Const.TAG_AUTO_ROTATE, true));
 
-       RadioGroup radioGroup = findViewById(R.id.bg_group);
-       radioGroup.check(preferences.getInt(Const.TAG_BG_TEXURE,R.id.radio_default));
-       radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(RadioGroup radioGroup, int i) {
-               preferences.edit().putInt(Const.TAG_BG_TEXURE,i).apply();
-           }
-       });
+        RadioGroup radioGroup = findViewById(R.id.bg_group);
+        radioGroup.check(preferences.getInt(Const.TAG_BG_TEXURE, R.id.radio_default));
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                preferences.edit().putInt(Const.TAG_BG_TEXURE, i).apply();
+            }
+        });
 
         SeekBar seekBar = findViewById(R.id.sk_scale);
-        seekBar.setProgress(preferences.getInt(Const.TAG_SCALE_RATE,30));
+        seekBar.setProgress(preferences.getInt(Const.TAG_SCALE_RATE, 30));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -92,16 +102,61 @@ public class WallpaperPreferenceActivity extends Activity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                preferences.edit().putInt(Const.TAG_SCALE_RATE,seekBar.getProgress()).apply();
+                preferences.edit().putInt(Const.TAG_SCALE_RATE, seekBar.getProgress()).apply();
+            }
+        });
+        findViewById(R.id.btn_preview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WallpaperPreferenceActivity.this, MainActivity.class);
+                WallpaperPreferenceActivity.this.startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn_choose).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast obj = Toast.makeText(WallpaperPreferenceActivity.this, "Choose " + getString(R.string.app_name_wallpaper) + " from the list", Toast.LENGTH_LONG);
+                obj.setGravity(17, 0, 0);
+                ((Toast) (obj)).show();
+                Intent Intent = new Intent();
+                Intent.setAction("android.service.wallpaper.LIVE_WALLPAPER_CHOOSER");
+                startActivity(Intent);
             }
         });
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
         MobileAds.initialize(this, getString(R.string.app_admob_id));
         addAdView();
+
+//        if (getIntent() != null && "android.intent.action.MAIN".equals(getIntent().getAction())) { // start from launcher
+//            showDialog();
+//        }
+
+
     }
 
-    private void addAdView(){
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.loader);
+        builder.setTitle(R.string.tip_title);
+        builder.setMessage(R.string.tip_msg);
+        builder.setPositiveButton(R.string.btn_sure, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.setNegativeButton(R.string.btn_preview, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
+    }
+
+    private void addAdView() {
         ViewGroup.LayoutParams ad_layout_params =
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -111,7 +166,7 @@ public class WallpaperPreferenceActivity extends Activity {
         mAdView.setAdUnitId(getString(R.string.app_admob_banner_id));
 //        mAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
         mAdView.setLayoutParams(ad_layout_params);
-        ((LinearLayout)findViewById(R.id.ad_layout)).addView(mAdView);
+        ((LinearLayout) findViewById(R.id.ad_layout)).addView(mAdView);
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -125,12 +180,19 @@ public class WallpaperPreferenceActivity extends Activity {
             public void onAdLoaded() {
                 mHandler.sendEmptyMessage(0);
             }
+
             @Override
-            public void onAdFailedToLoad(int errorCode) { }
+            public void onAdFailedToLoad(int errorCode) {
+            }
+
             @Override
-            public void onAdOpened() { }
+            public void onAdOpened() {
+            }
+
             @Override
-            public void onAdLeftApplication() { }
+            public void onAdLeftApplication() {
+            }
+
             @Override
             public void onAdClosed() {
                 //mInterstitialAd.loadAd(new AdRequest.Builder().build());

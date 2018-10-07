@@ -34,13 +34,7 @@ public class MainActivity extends Activity implements View.OnTouchListener, Shar
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rajawali_textureview_fragment);
-        findViewById(R.id.change).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WallpaperPreferenceActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
+
         preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         preferences.registerOnSharedPreferenceChangeListener(this);
         // Find the TextureView
