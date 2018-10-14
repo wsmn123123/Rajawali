@@ -41,22 +41,13 @@ public class WallpaperPreferenceActivity extends Activity {
     SharedPreferences preferences;
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
-    Handler mHandler;
-
+    private int mClickId;
+    private boolean isAdLoaded = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        mHandler = new Handler(getMainLooper()) {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                if (!isFinishing()) {
-                    mInterstitialAd.show();
-                }
-            }
-        };
         preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 
         Switch dragRotate = findViewById(R.id.switch_drag_rotate);
@@ -87,6 +78,15 @@ public class WallpaperPreferenceActivity extends Activity {
             }
         });
 
+        RadioGroup ballGroup = findViewById(R.id.ball_group);
+        ballGroup.check(preferences.getInt(Const.TAG_BALL_TYPE, R.id.radio_baskball));
+        ballGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                preferences.edit().putInt(Const.TAG_BALL_TYPE, i).apply();
+            }
+        });
+
         SeekBar seekBar = findViewById(R.id.sk_scale);
         seekBar.setProgress(preferences.getInt(Const.TAG_SCALE_RATE, 30));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -108,31 +108,38 @@ public class WallpaperPreferenceActivity extends Activity {
         findViewById(R.id.btn_preview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WallpaperPreferenceActivity.this, MainActivity.class);
-                WallpaperPreferenceActivity.this.startActivity(intent);
+                mClickId = R.id.btn_preview;
+                if(!showAd()){
+                    toPreview();
+                }
             }
         });
+
         findViewById(R.id.btn_choose).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast obj = Toast.makeText(WallpaperPreferenceActivity.this, "Choose " + getString(R.string.app_name_wallpaper) + " from the list", Toast.LENGTH_LONG);
-                obj.setGravity(17, 0, 0);
-                ((Toast) (obj)).show();
-                Intent Intent = new Intent();
-                Intent.setAction("android.service.wallpaper.LIVE_WALLPAPER_CHOOSER");
-                startActivity(Intent);
+                mClickId = R.id.btn_choose;
+                if(!showAd()) {
+                    toChoose();
+                }
             }
         });
 
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
         MobileAds.initialize(this, getString(R.string.app_admob_id));
         addAdView();
-
-//        if (getIntent() != null && "android.intent.action.MAIN".equals(getIntent().getAction())) { // start from launcher
-//            showDialog();
-//        }
-
-
+    }
+    private void toPreview(){
+        Intent intent = new Intent(WallpaperPreferenceActivity.this, MainActivity.class);
+        WallpaperPreferenceActivity.this.startActivity(intent);
+    }
+    private void toChoose(){
+        Toast obj = Toast.makeText(WallpaperPreferenceActivity.this, "Choose " + getString(R.string.app_name_wallpaper) + " from the list", Toast.LENGTH_LONG);
+        obj.setGravity(17, 0, 0);
+        ((Toast) (obj)).show();
+        Intent Intent = new Intent();
+        Intent.setAction("android.service.wallpaper.LIVE_WALLPAPER_CHOOSER");
+        startActivity(Intent);
     }
 
 
@@ -178,7 +185,7 @@ public class WallpaperPreferenceActivity extends Activity {
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-                mHandler.sendEmptyMessage(0);
+                isAdLoaded = true;
             }
 
             @Override
@@ -195,8 +202,24 @@ public class WallpaperPreferenceActivity extends Activity {
 
             @Override
             public void onAdClosed() {
-                //mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                isAdLoaded = false;
+                if(mClickId == R.id.btn_choose){
+                    toChoose();
+                }else if(mClickId == R.id.btn_preview){
+                    toPreview();
+                }
+                mClickId = 0;
             }
         });
+
+    }
+
+    private boolean showAd(){
+        if(isAdLoaded && mInterstitialAd != null && mInterstitialAd.isLoaded()){
+            mInterstitialAd.show();
+            return true;
+        }
+        return false;
     }
 }

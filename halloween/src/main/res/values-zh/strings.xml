@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_wallpaper">万圣节 3D</string>
+    <string name="dragable">拖动旋转</string>
+    <string name="automatic_rotation">自动旋转</string>
+    <string name="ball_rotate_settings">3D旋转球-设置</string>
+    <string name="basic">基本</string>
+    <string name="background">背景</string>
+    <string name="rd_default">默认墙面</string>
+    <string name="rd_drop">水滴形状</string>
+    <string name="rd_bone">离心花纹</string>
+    <string name="rd_wave">浪花波纹</string>
+    <string name="scale">缩放</string>
+    <string name="tip_msg">msg</string>
+    <string name="tip_title">title</string>
+    <string name="btn_sure">Sure</string>
+    <string name="btn_preview">预览</string>
+    <string name="btn_choose">选择 >></string>
+    <string name="ball_type">球</string>
+    <string name="football">足球</string>
+    <string name="basketball">篮球</string>
+</resources>

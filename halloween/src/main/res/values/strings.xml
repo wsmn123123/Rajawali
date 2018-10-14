@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Halloween 3D</string>
+    <string name="app_name_wallpaper">Halloween 3D Wallpaper</string>
+    <string name="settings_title">Settings</string>
+    <string name="renderer_category">Wallpaper Renderer</string>
+    <string name="renderer_picker_title">Renderer</string>
+    <string name="renderer_picker_summary">Choose the renderer class to use for the wallpaper demo.</string>
+    <!-- Wallpaper -->
+    <!-- Name in Live Wallpaper Picker list -->
+    <string name="lwp_name">Halloween 3D Wallpaper</string>
+
+    <!-- Description in Live Wallpaper Picker list -->
+    <string name="lwp_desc">Halloween 3D, with light moving live wallpaper.</string>
+
+    <!-- Author -->
+    <string name="lwp_author">BrightMoon Studio</string>
+    <!-- Quick little message displayed when the Live Wallpaper Picker is opened -->
+    <!-- The message text is the prefix, lwp_name, and suffix concatenated -->
+    <string name="picker_toast_prefix">Choose \"</string>
+    <string name="picker_toast_suffix">\" from the list of live wallpapers</string>
+    <string name="ball_rotate_settings">Halloween 3D - Settings</string>
+
+
+    <string name="app_admob_id">ca-app-pub-3336666664501170</string>
+    <string name="app_admob_banner_id">ca-app-pub-3336666664501170/6204912240</string>
+    <string name="app_admob_interstitial_id">ca-app-pub-3336666664501170/5724446381</string>
+    <string name="dragable">Dragable</string>
+    <string name="automatic_rotation">Automatic rotation</string>
+    <string name="basic">Basic</string>
+    <string name="background">Background</string>
+    <string name="rd_default">Default Wall</string>
+    <string name="rd_drop">Gray Drop</string>
+    <string name="rd_bone">White Centrifugal</string>
+    <string name="rd_wave">Colorful Wave</string>
+    <string name="scale">Scale</string>
+
+    <string name="tip_msg">msg</string>
+    <string name="tip_title">title</string>
+    <string name="btn_sure">Sure</string>
+    <string name="btn_preview">Preview</string>
+    <string name="btn_choose">Choose >></string>
+    <string name="ball_type">Ball</string>
+    <string name="football">Football</string>
+    <string name="basketball">Basketball</string>
+</resources>

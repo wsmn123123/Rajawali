@@ -138,12 +138,25 @@ class BallScene extends Scene implements OnObjectPickedListener {
 
         Material material2 = new Material();
         material2.setDiffuseMethod(new DiffuseMethod.Lambert());
-        material2.setSpecularMethod(new SpecularMethod.Phong(Color.RED, 150));
+        material2.setSpecularMethod(new SpecularMethod.Phong(Color.WHITE, 520));
         material2.enableLighting(true);
-        material2.addTexture(new Texture("earthDiffuseTex", R.drawable.basketball_t));
-        material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.basketball_nor_1));
+        int ballType = mpreferences.getInt(Const.TAG_BALL_TYPE,R.id.radio_baskball);
+        if(ballType == R.id.radio_football){
+            material2.addTexture(new Texture("earthDiffuseTex", R.drawable.football));
+            material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.football_nor));
+        }else {
+            material2.addTexture(new Texture("earthDiffuseTex", R.drawable.basketball));
+            material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.basketball_nor_1));
+        }
         material2.setColorInfluence(0);
         mBall.setMaterial(material2);
+
+//        Material phong = new Material();
+//        phong.enableLighting(true);
+//        phong.setDiffuseMethod(new DiffuseMethod.Lambert());
+//        phong.setSpecularMethod(new SpecularMethod.Phong(Color.WHITE, 60));
+//        mMonkey3.setMaterial(phong);
+//        mMonkey3.setColor(0xff00ff00);
 
         if(mpreferences.getBoolean(Const.TAG_DRAG,true)){
             mPicker.registerObject(mBall);

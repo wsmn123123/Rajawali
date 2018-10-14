@@ -39,4 +39,7 @@
     <string name="btn_sure">Sure</string>
     <string name="btn_preview">Preview</string>
     <string name="btn_choose">Choose >></string>
+    <string name="ball_type">Ball</string>
+    <string name="football">Football</string>
+    <string name="basketball">Basketball</string>
 </resources>

@@ -16,4 +16,7 @@
     <string name="btn_sure">Sure</string>
     <string name="btn_preview">预览</string>
     <string name="btn_choose">选择 >></string>
+    <string name="ball_type">球</string>
+    <string name="football">足球</string>
+    <string name="basketball">篮球</string>
 </resources>
