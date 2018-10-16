@@ -120,6 +120,8 @@ public class WallpaperPreferenceActivity extends Activity {
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
         MobileAds.initialize(this, getString(R.string.app_admob_id));
 //        addAdView();
+
+        toPreview();
     }
 
     private void toPreview(){

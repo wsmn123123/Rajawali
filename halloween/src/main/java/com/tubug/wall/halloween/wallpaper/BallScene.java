@@ -13,16 +13,20 @@ import com.tubug.wall.halloween.R;
 import org.rajawali3d.Object3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.ColorAnimation3D;
+import org.rajawali3d.animation.IAnimationListener;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
 import org.rajawali3d.animation.TranslateAnimation3D;
 import org.rajawali3d.bounds.BoundingBox;
 import org.rajawali3d.cameras.Camera;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.lights.SpotLight;
 import org.rajawali3d.loader.LoaderOBJ;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.NormalMapTexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.Matrix4;
@@ -44,11 +48,12 @@ class BallScene extends Scene implements OnObjectPickedListener {
     SharedPreferences mpreferences;
     RotateOnAxisAnimation earthAnim;
     RotateOnAxisAnimation wallAnim;
-    private PointLight mFrontLight;
+    private SpotLight mFrontLight;
     private DirectionalLight mBackLight;
     private Animation3D mFountLightAnim,mBackLightAnim;
     private ObjectColorPicker mPicker;
     private Object3D mSelectedObject;
+    private Object3D nanGua;
 
     private int[] mViewport;
     private double[] mNearPos4;
@@ -99,52 +104,17 @@ class BallScene extends Scene implements OnObjectPickedListener {
        float z = mpreferences.getInt(Const.TAG_SCALE_RATE,30);
        z /= 10f;
        z = 7-z;
-        mCamera2.setPosition(0, 0, z);
+//        mCamera2.setPosition(0, 0, z);
+        initWall();
 
-        wall = new Plane(18, 12, 2, 2);
-        Material material1 = new Material();
-        material1.setDiffuseMethod(new DiffuseMethod.Lambert());
-        material1.enableLighting(true);
-        int bgTexId = mpreferences.getInt(Const.TAG_BG_TEXURE,R.id.radio_default);
-//        int diffTexId = R.drawable.masonry_wall_texture;
-//        int norTexId = R.drawable.masonry_wall_normal_map;
-//        switch (bgTexId){
-//            case R.id.radio_bones:
-//                diffTexId = R.drawable.born;
-//                 norTexId = R.drawable.born_nor;
-//                break;
-//            case R.id.radio_drop:
-//                diffTexId = R.drawable.drop;
-//                norTexId = R.drawable.drop_nor;
-//                break;
-//            case R.id.radio_wave:
-//                diffTexId = R.drawable.wave;
-//                norTexId = R.drawable.wave_nor;
-//                break;
-//        }
-
-//        material1.addTexture(new Texture("wallDiffuseTex", diffTexId));
-//        material1.addTexture(new NormalMapTexture("wallNormalTex", norTexId));
-//        material1.setColorInfluence(0);
-//        wall.setMaterial(material1);
-//        wall.setZ(-2);
-//        addChild(wall);
-
-        RotateOnAxisAnimation wallAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, -5, 5);
-        wallAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
-        wallAnim.setDurationMilliseconds(5000);
-        wallAnim.setTransformable3D(wall);
-        registerAnimation(wallAnim);
-        wallAnim.play();
-
-        LoaderOBJ objParser = new LoaderOBJ(mRenderer, R.raw.untitled_obj);
+        LoaderOBJ objParser = new LoaderOBJ(mRenderer, R.raw.untitled1_obj);
         objParser.parse();
-        Object3D mObjectGroup = objParser.getParsedObject();
-        BoundingBox boundingBox =  mObjectGroup.getBoundingBox();
+        nanGua = objParser.getParsedObject();
+        BoundingBox boundingBox =  nanGua.getBoundingBox();
         double v = Vector3.distanceTo(boundingBox.getMax(),boundingBox.getMin());
-        Log.d(TAG,"v:"+v);
-        mObjectGroup.setPosition(0,0,0);
-        addChild(mObjectGroup);
+        Log.e(TAG,"v:"+v);
+        nanGua.setPosition(0,0,0);
+        addChild(nanGua);
 
 //        mBall = new Sphere(1, 32, 32);
 //        mBall.setZ(0f);
@@ -165,43 +135,44 @@ class BallScene extends Scene implements OnObjectPickedListener {
 //        material2.setColorInfluence(0);
 //        mBall.setMaterial(material2);
 
-//        Material phong = new Material();
-//        phong.enableLighting(true);
-//        phong.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Material phong = new Material();
+        phong.enableLighting(true);
+        phong.setDiffuseMethod(new DiffuseMethod.Lambert());
 //        phong.setSpecularMethod(new SpecularMethod.Phong(Color.WHITE, 60));
-//        mMonkey3.setMaterial(phong);
-//        mMonkey3.setColor(0xff00ff00);
+        nanGua.setMaterial(phong);
+        nanGua.setColor(0xfafaff00);
 
-//        if(mpreferences.getBoolean(Const.TAG_DRAG,true)){
-//            mPicker.registerObject(mBall);
-//        }
+        if(mpreferences.getBoolean(Const.TAG_DRAG,true))
+        {
+            mPicker.registerObject(nanGua);
+        }
 
 //        if(mpreferences.getBoolean(Const.TAG_AUTO_ROTATE,true))
         {
             earthAnim = new RotateOnAxisAnimation(new Vector3(1, 1, 0), 359);
             earthAnim.setDurationMilliseconds(6000);
             earthAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
-            earthAnim.setTransformable3D(mObjectGroup);
+            earthAnim.setTransformable3D(nanGua);
             registerAnimation(earthAnim);
-            earthAnim.play();
+//            earthAnim.play();
         }
 
-        mFrontLight = new PointLight();
-        mFrontLight.setPosition(-2, -2, 0);
+        mFrontLight = new SpotLight();
+        mFrontLight.setPosition(0, 0, 0);
         mFrontLight.setPower(5f);
-        mFrontLight.setLookAt(0,0,0);
-        mFrontLight.setColor(0.5f,0.5f,0.5f);
+        mFrontLight.setLookAt(0,0,v/2);
+        mFrontLight.setColor(1f,1f,0f);
         addLight(mFrontLight);
 
 
-        mFountLightAnim = new TranslateAnimation3D(new Vector3(-5, 2, 4),
-                new Vector3(5, -2, 4));
-        mFountLightAnim.setDurationMilliseconds(4000);
-        mFountLightAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
-        mFountLightAnim.setTransformable3D(mFrontLight);
-        mFountLightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-        registerAnimation(mFountLightAnim);
-        mFountLightAnim.play();
+//        mFountLightAnim = new TranslateAnimation3D(new Vector3(-5, 2, 4),
+//                new Vector3(5, -2, 4));
+//        mFountLightAnim.setDurationMilliseconds(4000);
+//        mFountLightAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
+//        mFountLightAnim.setTransformable3D(mFrontLight);
+//        mFountLightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
+//        registerAnimation(mFountLightAnim);
+//        mFountLightAnim.play();
 
 
         mBackLight = new DirectionalLight();
@@ -221,11 +192,83 @@ class BallScene extends Scene implements OnObjectPickedListener {
         registerAnimation(mBackLightAnim);
         mBackLightAnim.play();
 
+        startTintLight();
+
     }
     public void getObjectAt(float x, float y) {
         mPicker.getObjectAt(x, y);
         touchBeginX = x;
         touchBeginY = y;
+    }
+
+    private void initWall() throws ATexture.TextureException {
+        wall = new Plane(10, 10, 2, 2);
+        Material material1 = new Material();
+        material1.setDiffuseMethod(new DiffuseMethod.Lambert());
+        material1.enableLighting(true);
+        int bgTexId = mpreferences.getInt(Const.TAG_BG_TEXURE,R.id.radio_default);
+        int diffTexId = R.drawable.halloween_bg1;
+        int norTexId = R.drawable.halloween_bg1_map;
+        switch (bgTexId){
+            case R.id.radio_bones:
+                diffTexId = R.drawable.pure;
+//                 norTexId = R.drawable.born_nor;
+                break;
+//            case R.id.radio_drop:
+//                diffTexId = R.drawable.drop;
+//                norTexId = R.drawable.drop_nor;
+//                break;
+//            case R.id.radio_wave:
+//                diffTexId = R.drawable.wave;
+//                norTexId = R.drawable.wave_nor;
+//                break;
+        }
+
+        material1.addTexture(new Texture("wallDiffuseTex", diffTexId));
+        material1.addTexture(new NormalMapTexture("wallNormalTex", norTexId));
+        material1.setColorInfluence(0);
+        wall.setMaterial(material1);
+        wall.setZ(-2);
+        addChild(wall);
+
+        RotateOnAxisAnimation wallAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, -5, 5);
+        wallAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
+        wallAnim.setDurationMilliseconds(5000);
+        wallAnim.setTransformable3D(wall);
+        registerAnimation(wallAnim);
+        wallAnim.play();
+    }
+    private void startTintLight(){
+        final Object3D target = new Object3D();
+        Animation3D anim = new ColorAnimation3D(0xaaff1111, 0xffffff11);
+        anim.setTransformable3D(target);
+        anim.setDurationMilliseconds(2000);
+        anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
+        anim.registerListener(new IAnimationListener() {
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationUpdate(Animation animation, double v) {
+                float power = (float) (v * 5.0f);
+                mFrontLight.setPower(Math.abs(power));
+                mFrontLight.setLookAt(nanGua.getRotX(),nanGua.getRotY(),nanGua.getRotZ());
+            }
+        });
+        registerAnimation(anim);
+        anim.play();
     }
 
     public void rotateObj(float x, float y){
@@ -246,17 +289,19 @@ class BallScene extends Scene implements OnObjectPickedListener {
         str += dy;
         double angle = Math.asin(dx/mViewport[2]);
         double degree = angle * 180;
-        if(Math.abs(degree) <= 180) {
+        angle = mSelectedObject.getRotY() + -degree;
+        if(angle <= 90 && angle >= -90) {
             mSelectedObject.setRotY(mSelectedObject.getRotY() + -degree);
         }
 //
 //        str += " rY:";
 //        str+= -degree;
-//        angle = Math.asin(dy / mViewport[3]);
-//        degree = angle  * 180;
-//        if(Math.abs(degree) <= 180) {
-//            mSelectedObject.setRotZ(mSelectedObject.getRotZ() + -degree);
-//        }
+        angle = Math.asin(dy / mViewport[3]);
+        degree = angle  * 180;
+        angle = mSelectedObject.getRotX() + -degree;
+        if(angle <= 75 && angle >= -75) {
+            mSelectedObject.setRotZ(mSelectedObject.getRotX() + -degree);
+        }
 //        str+=" rX:";
 //        str+= -degree;
 
@@ -268,7 +313,7 @@ class BallScene extends Scene implements OnObjectPickedListener {
 
     public void stopMovingSelectedObject() {
         if(earthAnim != null && earthAnim.isPaused()){
-            earthAnim.play();
+//            earthAnim.play();
         }
         mSelectedObject = null;
     }
