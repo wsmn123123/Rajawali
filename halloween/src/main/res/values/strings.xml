@@ -22,16 +22,15 @@
 
 
     <string name="app_admob_id">ca-app-pub-3336666664501170</string>
-    <string name="app_admob_banner_id">ca-app-pub-3336666664501170/6204912240</string>
-    <string name="app_admob_interstitial_id">ca-app-pub-3336666664501170/5724446381</string>
+    <string name="app_admob_banner_id">ca-app-pub-3336666664501170/3017862739</string>
+    <string name="app_admob_interstitial_id">ca-app-pub-3336666664501170/1760621388</string>
     <string name="dragable">Dragable</string>
     <string name="automatic_rotation">Automatic rotation</string>
     <string name="basic">Basic</string>
     <string name="background">Background</string>
-    <string name="rd_default">Default Wall</string>
-    <string name="rd_drop">Gray Drop</string>
-    <string name="rd_bone">White Centrifugal</string>
-    <string name="rd_wave">Colorful Wave</string>
+    <string name="rd_default">Happy Halloween</string>
+    <string name="rd_yellow_light">Yellow Light</string>
+    <string name="rd_black_eye">Black Eye</string>
     <string name="scale">Scale</string>
 
     <string name="tip_msg">msg</string>

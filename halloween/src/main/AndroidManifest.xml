@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tubug.wall.halloween">
+    package="com.tubug.wall.halloween3d">
 
     <uses-feature
         android:name="android.software.live_wallpaper"
@@ -18,11 +18,11 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.tubug.wall.halloween.MainActivity">
+        <activity android:name=".MainActivity">
 
         </activity>
 
-        <activity android:name="com.tubug.wall.halloween.wallpaper.WallpaperPreferenceActivity"
+        <activity android:name=".wallpaper.WallpaperPreferenceActivity"
             android:label="@string/ball_rotate_settings"
             android:exported="true">
             <intent-filter>
@@ -34,7 +34,7 @@
 
 
         <service
-            android:name="com.tubug.wall.halloween.wallpaper.MoonStudioWallpaper"
+            android:name=".wallpaper.MoonStudioWallpaper"
             android:label="@string/app_name_wallpaper"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>

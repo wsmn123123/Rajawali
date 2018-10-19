@@ -1,18 +1,25 @@
+万圣节壁纸 3D 
+
+南瓜是万圣节的标志性象征。南瓜是橘黄色的，所以橘黄色也成了传统的万圣节颜色。用南瓜雕制南瓜灯也是一个万圣节传统
+
+万圣节是一个狂欢节,各种各样的活动都会在这一天展开,万圣节前夕，孩子们会提着南瓜灯，穿着各式各样的稀奇古怪的服装，挨家挨户地去索要糖果，
+不停地说：“trick or treat."（意思是：‘给不给，不给就捣蛋’）要是你不肯给糖果的话，孩子们就会很生气，用各种方法去惩罚你.
 
 
+南瓜灯3d 万圣节.
 
-3D球,3D球,逼真的3D球.真实的纹理,真实的贴图.在两组灯光下,球体反射出真实的表面.
-可以按住,拖动(需设置'可拖动').可看清Bright Moon的logo.
-设置自动旋转后,球体会慢慢转动.真的比较真实.
 
-目前只有篮球一个球体.后续会增加其他球体. 请您保存关注.
+Halloween wallpaper 3D
+Pumpkin is an iconic symbol of Halloween. The pumpkin is orange, so the orange color has become a traditional Halloween color. Pumpkin lanterns carved with pumpkins is also a Halloween tradition.
 
-3D ball,3D ball,Realistic 3D ball. Real texture, real texture. Under two sets of lights, the ball reflects the real surface.
-You can hold down and drag (you need to set 'dragable'). You can see the logo of Bright Moon.
+Halloween is a carnival, and many kinds of activities will start on this day. On Halloween, children will carry pumpkin lanterns, wear all kinds of bizarre costumes, go door to door to ask for candy.Keep saying: "trick or treat."
+If you refuse to give candy, the children will be very angry and punish you in various ways.
 
-After setting the automatic rotation, the sphere will slowly rotate. It is really true.
+Pumpkin lamp 3d halloween.
 
-At present, there is only one sphere in basketball. The follow-up will add other balls. Please pay your attention.
+
+1.改变背景.
+2.scale
 
 1.0:
 First launch

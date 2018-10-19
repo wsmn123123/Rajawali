@@ -38,127 +38,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/basic" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/dragable"
-                        android:textSize="18sp" />
-
-                    <Switch
-                        android:id="@+id/switch_drag_rotate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:checked="true"
-                        android:textSize="24sp"
-                        android:thumb="@drawable/switch_custom_thumb_selector"
-                        android:track="@drawable/switch_custom_track_selector" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/automatic_rotation"
-                        android:textSize="18sp" />
-
-                    <Switch
-                        android:id="@+id/switch_auto_rotate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:checked="true"
-                        android:textSize="24sp"
-                        android:thumb="@drawable/switch_custom_thumb_selector"
-                        android:track="@drawable/switch_custom_track_selector" />
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/ball_type" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
-                    <RadioGroup
-                        android:id="@+id/ball_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <RadioButton
-                            android:id="@+id/radio_baskball"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:button="@null"
-                            android:drawableRight="@android:drawable/btn_radio"
-                            android:text="@string/basketball" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="#ddd" />
-
-                        <RadioButton
-                            android:id="@+id/radio_football"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:button="@null"
-                            android:drawableRight="@android:drawable/btn_radio"
-                            android:text="@string/football" />
-                    </RadioGroup>
-                </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -199,13 +83,13 @@
                             android:background="#ddd" />
 
                         <RadioButton
-                            android:id="@+id/radio_drop"
+                            android:id="@+id/radio_yellow_light"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:button="@null"
                             android:drawableRight="@android:drawable/btn_radio"
-                            android:text="@string/rd_drop" />
+                            android:text="@string/rd_yellow_light" />
 
                         <View
                             android:layout_width="match_parent"
@@ -214,28 +98,14 @@
                             android:background="#ddd" />
 
                         <RadioButton
-                            android:id="@+id/radio_bones"
+                            android:id="@+id/radio_black_eye"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:button="@null"
                             android:drawableRight="@android:drawable/btn_radio"
-                            android:text="@string/rd_bone" />
+                            android:text="@string/rd_black_eye" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="#ddd" />
-
-                        <RadioButton
-                            android:id="@+id/radio_wave"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:button="@null"
-                            android:drawableRight="@android:drawable/btn_radio"
-                            android:text="@string/rd_wave" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -320,7 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Supplyed by Rajawali"
+            android:text="Supported by Rajawali"
             android:textColor="#aaa"
             android:textSize="10sp" />
 

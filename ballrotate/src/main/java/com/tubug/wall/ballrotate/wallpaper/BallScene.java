@@ -144,10 +144,14 @@ class BallScene extends Scene implements OnObjectPickedListener {
         if(ballType == R.id.radio_football){
             material2.addTexture(new Texture("earthDiffuseTex", R.drawable.football));
             material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.football_nor));
+        }else if(ballType == R.id.radio_volleyball){
+            material2.addTexture(new Texture("earthDiffuseTex", R.drawable.volleyball));
+//        material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.basketball_nor_1));
         }else {
             material2.addTexture(new Texture("earthDiffuseTex", R.drawable.basketball));
             material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.basketball_nor_1));
         }
+
         material2.setColorInfluence(0);
         mBall.setMaterial(material2);
 
@@ -173,7 +177,7 @@ class BallScene extends Scene implements OnObjectPickedListener {
 
         mFrontLight = new PointLight();
         mFrontLight.setPosition(-2, -2, 0);
-        mFrontLight.setPower(5f);
+        mFrontLight.setPower(3f);
         mFrontLight.setLookAt(0,0,0);
         mFrontLight.setColor(0.5f,0.5f,0.5f);
         addLight(mFrontLight);

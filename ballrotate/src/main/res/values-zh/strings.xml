@@ -18,5 +18,6 @@
     <string name="btn_choose">选择 >></string>
     <string name="ball_type">球</string>
     <string name="football">足球</string>
+    <string name="volleyball">排球</string>
     <string name="basketball">篮球</string>
 </resources>

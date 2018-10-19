@@ -157,6 +157,20 @@
                             android:button="@null"
                             android:drawableRight="@android:drawable/btn_radio"
                             android:text="@string/football" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="#ddd" />
+
+                        <RadioButton
+                            android:id="@+id/radio_volleyball"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:button="@null"
+                            android:drawableRight="@android:drawable/btn_radio"
+                            android:text="@string/volleyball" />
                     </RadioGroup>
                 </LinearLayout>
                 <TextView
@@ -320,7 +334,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Supplyed by Rajawali"
+            android:text="Supported by Rajawali"
             android:textColor="#aaa"
             android:textSize="10sp" />
 

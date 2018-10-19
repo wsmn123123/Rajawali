@@ -41,5 +41,7 @@
     <string name="btn_choose">Choose >></string>
     <string name="ball_type">Ball</string>
     <string name="football">Football</string>
+    <string name="volleyball">Volleyball</string>
+
     <string name="basketball">Basketball</string>
 </resources>
